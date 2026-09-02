@@ -72,7 +72,7 @@
                     const floor2 = ['201', '202', '203', '204', '205', '206', '207', '208', '209', '210', '211', '212'];
                     floor2.forEach(room => {
                         document.write(`
-                            <div onclick="selectRoom('${room}')" class="bg-white border border-gray-200 rounded-xl p-4 text-center cursor-pointer hover:border-amber-500 hover:shadow-md transition duration-200 group">
+                            <div onclick="showRoomPhoto('${room}')" class="bg-white border border-gray-200 rounded-xl p-4 text-center cursor-pointer hover:border-amber-500 hover:shadow-md transition duration-200 group">
                                 <div class="text-gray-400 group-hover:text-amber-500 mb-2">
                                     <i class="fa-solid fa-bed text-2xl"></i>
                                 </div>
@@ -95,7 +95,7 @@
                     const floor3 = ['301', '302', '303', '304', '305', '306', '307', '308', '309'];
                     floor3.forEach(room => {
                         document.write(`
-                            <div onclick="selectRoom('${room}')" class="bg-white border border-gray-200 rounded-xl p-4 text-center cursor-pointer hover:border-amber-500 hover:shadow-md transition duration-200 group">
+                            <div onclick="showRoomPhoto('${room}')" class="bg-white border border-gray-200 rounded-xl p-4 text-center cursor-pointer hover:border-amber-500 hover:shadow-md transition duration-200 group">
                                 <div class="text-gray-400 group-hover:text-amber-500 mb-2">
                                     <i class="fa-solid fa-bed text-2xl"></i>
                                 </div>
@@ -137,6 +137,30 @@
             </div>
         </div>
     </section>
+
+
+    <!-- Room Photo Modal -->
+    <div id="roomPhotoModal" class="hidden fixed inset-0 z-[100] bg-black/80 flex items-center justify-center p-4"
+         onclick="closeRoomPhoto(event)">
+        <div class="relative bg-white rounded-2xl shadow-2xl w-full max-w-3xl overflow-hidden"
+             onclick="event.stopPropagation()">
+            <button type="button" onclick="closeRoomPhoto()"
+                    class="absolute top-3 right-3 z-10 w-10 h-10 rounded-full bg-black/60 text-white text-xl hover:bg-black/80 transition"
+                    aria-label="Close">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <img id="roomPhoto"
+                 src=""
+                 alt="Room Photo"
+                 class="w-full max-h-[75vh] object-contain bg-gray-100">
+
+            <div class="p-4 text-center">
+                <h3 id="roomPhotoTitle" class="text-2xl font-bold text-slate-900"></h3>
+                <p class="text-sm text-gray-500 mt-1">রুমের ছবি</p>
+            </div>
+        </div>
+    </div>
 
     <!-- Booking Form Section -->
     <section id="booking" class="py-20 max-w-4xl mx-auto px-4">
@@ -192,8 +216,8 @@
                                 <option value="305">Room 305</option>
                                 <option value="306">Room 306</option>
                                 <option value="307">Room 307</option>
-                                <option value="307">Room 308</option>
-                                <option value="307">Room 309</option>
+                                <option value="308">Room 308</option>
+                                <option value="309">Room 309</option>
                             </optgroup>
                         </select>
                     </div>
